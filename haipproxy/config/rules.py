@@ -728,7 +728,7 @@ CRAWLER_TASKS = [
 
 # crawler will fetch tasks from the following queues
 CRAWLER_TASK_MAPS = {
-    'common': SPIDER_COMMON_TASK,
+    'common': SPIDER_COMMON_TASK, #'haipproxy:spider:common'
     'ajax': SPIDER_AJAX_TASK,
     'gfw': SPIDER_GFW_TASK,
     'ajax_gfw': SPIDER_AJAX_GFW_TASK

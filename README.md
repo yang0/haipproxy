@@ -1,3 +1,15 @@
+# 解读
+- python scheduler_booter.py --usage crawler
+> 第一步：把要抓取的页面链接放入redis
+- python crawler_booter.py --usage crawler
+> 第二步：从redis取链接，抓取代理ip
+- python scheduler_booter.py --usage validator
+> 第三步：把验证的任务放入redis
+- python crawler_booter.py --usage validator
+> 第四步：执行验证代理ip的任务
+
+
+- 
 # 高可用IP代理池
 [README](README_EN.md)　｜　[中文文档](README.md)
 

@@ -10,6 +10,7 @@ from twisted.internet import reactor
 from scrapy.crawler import CrawlerRunner
 from scrapy.utils.log import configure_logging
 from scrapy.utils.project import get_project_settings
+from loguru import logger
 
 from ..client import SquidClient
 # from logger import (
@@ -205,7 +206,19 @@ def crawler_start(usage, tasks):
     """Start specified spiders or validators from cmd with scrapy core api.
     There are four kinds of spiders: common, ajax, gfw, ajax_gfw. If you don't
     assign any tasks, all these spiders will run.
+
+    __all__ = ['CommonSpider', 'AjaxSpider',
+           'GFWSpider', 'AjaxGFWSpider',
+           'BaseSpider', 'all_spiders']
+
+
+    all_spiders = [
+        CommonSpider, AjaxSpider,
+        GFWSpider, AjaxGFWSpider,
+    ]
     """
+    
+    logger.info(f"usage:{usage}, tasks:{tasks}")
     if usage == 'crawler':
         maps = CRAWLER_TASK_MAPS
         origin_spiders = DEFAULT_CRAWLERS
@@ -214,8 +227,10 @@ def crawler_start(usage, tasks):
         origin_spiders = DEFAULT_VALIDATORS
 
     if not tasks:
+        logger.info(f"not tasks")
         spiders = origin_spiders
     else:
+        logger.info(f"tasks not null")
         spiders = list()
         cases = list(map(BaseCase, origin_spiders))
         for task in tasks:

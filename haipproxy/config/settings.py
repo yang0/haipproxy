@@ -64,8 +64,8 @@ REDIS_HOST = '127.0.0.1'
 if os.getenv("ISDOCKER"):
     REDIS_HOST = 'redis'
 REDIS_PORT = 6379
-REDIS_PASSWORD = '123456'
-REDIS_DB = 0
+REDIS_PASSWORD = 'abc123'
+REDIS_DB = 1
 
 # scheduler settings
 TIMER_RECORDER = 'haipproxy:scheduler:task'
